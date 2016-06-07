@@ -1,0 +1,38 @@
+project
+// =========================================================================
+// Menu Controller
+// =========================================================================
+
+.controller('MenuCtrl', function ( $scope, $http ) {
+  console.log("Menu Controller.");
+  	$scope.pizzas = {};
+
+	$scope.ingredients = {};
+
+	$http.get('http://localhost:8080/ingredients')
+		.success(function(data){
+			$scope.ingredients = data;
+			$http.get('http://localhost:8080/menu')
+		  		.success(function(data){
+		  			data.forEach(function(item){
+		  				item.iNames = [];
+		  				$scope.ingredients.forEach(function(ingredient){
+		  					if(item.ingredients.includes(ingredient.id)){
+		  						item.iNames.push(ingredient.label);
+		  					}
+		  					return;
+		  				})
+
+		  			});
+		  			$scope.pizzas = data;
+		  		}).error(function(error){
+		  			$scope.data.error= error;
+		  		});
+		}).error(function(error){
+			$scope.data.error= error;
+		});
+
+	$scope.addPizzaToCart = function(pizza){
+		
+	}
+});
