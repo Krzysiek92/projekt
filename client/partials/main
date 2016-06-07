@@ -1,0 +1,35 @@
+<div class="section" data-ng-controller="MenuCtrl as mctrl">
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h1>Menu</h1>
+                <hr>
+            </div>
+            <div ng-repeat="pizza in pizzas" class="col-lg-4 col-md-4 col-sm-6">
+                <h4>{{pizza.name}}</h4>
+                <h5>Cena: {{pizza.price}}</h5>
+                <h5>Składniki</h5>
+                <ul>
+                    <li ng-repeat="ingredient in pizza.iNames">{{ingredient}} </li>
+                </ul>
+                <p ng-click="addPizzaToCart(pizza)" class="btn-add">
+                    <i class="fa fa-shopping-cart"></i>
+                    <a href="javascript:;"> dodaj do koszyka</a>
+                </p>
+                <p class="btn-add">
+                    <i class="fa fa-dollar"></i>
+                    <a href="javascript:;"> kup</a>
+                </p>
+            </div>
+            
+        </div>
+        <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+</div>
+<!-- /.section -->
+
